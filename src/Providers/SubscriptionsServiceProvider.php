@@ -27,9 +27,6 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     protected function registerCommands(array $commands): void
     {
-        if (! $this->app->runningInConsole() && ! $this->runningInDevzone()) {
-            return;
-        }
 
         foreach ($commands as $key => $value) {
             $this->app->singleton($value, $key);
@@ -60,7 +57,7 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     protected function publishesResources(): bool
     {
-        return ! $this->app->environment('production') || $this->app->runningInConsole() || $this->runningInDevzone();
+        return ! $this->app->environment('production') || $this->app->runningInConsole();
     }
 
     /**
