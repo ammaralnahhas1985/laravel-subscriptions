@@ -1,8 +1,7 @@
 # Rinvex Subscriptions
 
-⚠️ This package is abandoned and no longer maintained. No replacement package was suggested. ⚠️
 
-👉 If you are interested to step on as the main maintainer of this package, please [reach out to me](https://twitter.com/omranic)!
+👉 This is a clone of https://github.com/rinvex/laravel-subscriptions that cn work with php 8.3
 
 ---
 
