@@ -54,6 +54,16 @@ class SubscriptionsServiceProvider extends ServiceProvider
     }
 
     /**
+     * Can publish resources.
+     *
+     * @return bool
+     */
+    protected function publishesResources(): bool
+    {
+        return ! $this->app->environment('production') || $this->app->runningInConsole() || $this->runningInDevzone();
+    }
+
+    /**
      * The commands to be registered.
      *
      * @var array
