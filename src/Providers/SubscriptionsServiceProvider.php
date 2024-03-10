@@ -96,6 +96,19 @@ class SubscriptionsServiceProvider extends ServiceProvider
     }
 
     /**
+     * Can autoload migrations.
+     *
+     * @param string $module
+     *
+     * @return bool
+     */
+    protected function autoloadMigrations(string $module): bool
+    {
+        return $this->publishesResources() && $this->app['config'][str_replace(['laravel-', '/'], ['', '.'], $module).'.autoload_migrations'];
+    }
+
+
+    /**
      * The commands to be registered.
      *
      * @var array
