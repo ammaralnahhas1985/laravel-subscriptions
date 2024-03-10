@@ -19,6 +19,26 @@ class SubscriptionsServiceProvider extends ServiceProvider
     use ConsoleTools;
 
     /**
+     * Register console commands.
+     *
+     * @param array $commands
+     *
+     * @return void
+     */
+    protected function registerCommands(array $commands): void
+    {
+        if (! $this->app->runningInConsole() && ! $this->runningInDevzone()) {
+            return;
+        }
+
+        foreach ($commands as $key => $value) {
+            $this->app->singleton($value, $key);
+        }
+
+        $this->commands(array_values($commands));
+    }
+
+    /**
      * The commands to be registered.
      *
      * @var array
