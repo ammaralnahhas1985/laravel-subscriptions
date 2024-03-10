@@ -38,6 +38,21 @@ class SubscriptionsServiceProvider extends ServiceProvider
         $this->commands(array_values($commands));
     }
 
+    protected function publishesConfig(string $package, bool $isModule = false): void
+    {
+        if (! $this->publishesResources()) {
+            return;
+        }
+
+        $namespace = str_replace('laravel-', '', $package);
+        $basePath = $isModule ? $this->app->path($package)
+            : $this->app->basePath('vendor/'.$package);
+
+        if (file_exists($path = $basePath.'/config/config.php')) {
+            $this->publishes([$path => $this->app->configPath(str_replace('/', '.', $namespace).'.php')], $namespace.'::config');
+        }
+    }
+
     /**
      * The commands to be registered.
      *
