@@ -110,7 +110,7 @@ trait HasPlanSubscriptions
         $trial = new Period($plan->trial_interval, $plan->trial_period, $startDate ?? now());
         $period = new Period($plan->invoice_interval, $plan->invoice_period, $trial->getEndDate());
 
-        $slug = $subscription.microtime();
+        $slug = str_replace(".", "_", $subscription.microtime(true));
 
         return $this->planSubscriptions()->create([
             'name' => $subscription,
