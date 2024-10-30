@@ -67,7 +67,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class PlanSubscription extends Model
 {
-    use HasSlug;
+    //use HasSlug;
     use HasFactory;
     use SoftDeletes;
     use BelongsToPlan;
@@ -183,18 +183,18 @@ class PlanSubscription extends Model
         });
     }
 
-    /**
-     * Get the options for generating the slug.
-     *
-     * @return \Spatie\Sluggable\SlugOptions
-     */
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-                          ->doNotGenerateSlugsOnUpdate()
-                          ->generateSlugsFrom('name')
-                          ->saveSlugsTo('slug');
-    }
+//    /**
+//     * Get the options for generating the slug.
+//     *
+//     * @return \Spatie\Sluggable\SlugOptions
+//     */
+//    public function getSlugOptions(): SlugOptions
+//    {
+//        return SlugOptions::create()
+//                          ->doNotGenerateSlugsOnUpdate()
+//                          ->generateSlugsFrom('name')
+//                          ->saveSlugsTo('slug');
+//    }
 
     /**
      * Get the owning subscriber.
